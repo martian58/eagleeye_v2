@@ -1,7 +1,7 @@
 import nmap
 import socket
 
-class eagle:
+class scanner:
     def __init__(self) -> None:
         self.hosts = []
         self.hosts_down = []
@@ -31,11 +31,14 @@ class eagle:
         except socket.herror:
             return "Unknown"
 
-    def scanner(self):
-        ip_range = "192.168.100.0/24"  # Modify this to match your network's IP range
+    def scanner(self,ip_range):
+        # ip_range = "192.168.100.0/24"  # Modify this to match your network's IP range
         devices = self.get_devices(ip_range)
         self.hosts = devices
         return devices
+    
+    def get_down_hosts(self):
+        devices = self.get_devices()
 
 if __name__ == "__main__":
     eagle.scanner()
